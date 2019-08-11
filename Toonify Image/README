@@ -1,0 +1,13 @@
+How to run the code :
+
+First change the path of the input file that you want to toonify (first line of code). Right now all the images that will be formed throughout the stages of this process will get formed in folder output_images.
+
+Then just run python3 myToon.py. All the images will get formed in output_images folder.
+
+parameters.py - Contains all the parameters that we are using. We can change the paramters in this file to see the desired effects.
+
+toonification.py - Contains just a function that does the toonification (same as myToon.py). Instead it takes an input image as parameter and displays the output image (No images are saved anywhere).
+
+toonifyVideo.py - It does the toonification of the video. The video is an input (First line of code). It produces the output in the folder output_video. Currently I have set maximum frames to extract from video to be 100. It saves all these frames and toonified video in this folder (output_video).
+
+Images contains some images for which we have tested our code.  
