@@ -1,0 +1,27 @@
+Task 3:-
+
+ridge_regression:-
+
+	List of lambdas = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
+	max_iter = 30000 
+	lr = 0.00001
+	epsilon = 1e-4
+	best_lambda = 12
+	Test SSE for best_lambda = 540434271952.08905
+
+lasso_regression:-
+
+	List of lambdas = [100000,150000,200000,250000,300000,350000,400000,450000,500000,550000]
+	max_iter = 1000
+	best_lambda = 350000
+	Test SSE for best_lambda = 533809272470.6632
+
+In both the plots, we see convex functions, so we can decrease the range of lambdas taken to get a more precise value
+If we see sse decreasing in one direction, we simply take more lambdas in that direction.
+
+
+Task 5:-
+
+Lasso regression gives weight vector with more frequent zeros, basically a sparse solution. This helps weed out the most irrelevant features. Thus lasso is more advantageous compared to ridge as it ignores the noisy features and only keeps the most important features.
+
+Sparse solution occurs because the contour graphs cut the constraint region at points which lie on some of the axes, reducing several coordinates to zero. L1-norm's contour is more likely to touch sse contour at a point on some axis than L2-norm.

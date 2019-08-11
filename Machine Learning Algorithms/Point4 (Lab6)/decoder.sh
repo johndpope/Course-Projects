@@ -1,0 +1,1 @@
+python3 decode_maze.py $1 $2;

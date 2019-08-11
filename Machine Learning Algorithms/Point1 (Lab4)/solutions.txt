@@ -1,0 +1,76 @@
+Name: Sarthak Mallick
+Roll number: 160050070
+========================================
+
+
+================
+     TASK 2
+================
+
+
+1. Run your code on datasets/garden.csv, with different values of k. Looking at the performance plots, does the SSE of k-means algorithm ever increase as the iterations are made? (1 mark)
+Answer: No, SSE of k-means algorithm never increases with the number of iterations, for any value of k. This aligns with our theoretical knowledge of k-means clustering.
+
+3. Look at the files 3lines.png and mouse.png. Manually draw cluster boundaries around the 3 clusters visible in each file (no need to submit the hand drawn clusters). Test the k-means algorithm on the datasets datasets/3lines.csv and datasets/mouse.csv. How does the algorithm’s clustering compare with the clustering you would do by hand? Why do you think this happens? (1 mark)
+Answer:
+
+In 3lines.png, for a point in any vertical line, there will be points on other lines closer to it than points at other end of that line.
+So, k-means assigns two points on different lines to same cluster because they are closer, and points on opposite ends of same line that are far from each other get assigned to diffferent clusters.
+
+In mouse.png, the points in the periphery of central cluster are closer in distance to the one of the outer clusters.
+Hence points in left of central cluster get assigned to the left cluster, though visually they belong to central cluster. 
+Similarly points in the right of central cluster get assigned to the right cluster.
+
+
+================
+     TASK 3
+================
+
+1. For each dataset, with kmeansplusplus initialization algorithm, report “average SSE” and "average iterations". Explain the results. (2 mark)
+Answer:
+
+Dataset     |  Initialization | Average SSE  | Average Iterations
+==================================================================
+   100.csv  |        forgy    |8472.63311469|	2.43
+   100.csv  |        kmeans++ |8472.63311469|	2.01
+  1000.csv  |        forgy    |21337462.2968|	3.28
+  1000.csv  |        kmeans++ |19877081.0987|	3.28
+ 10000.csv  |        forgy    |168842238.612|	21.1
+ 10000.csv  |        kmeans++ |22422448.4757|	8.2
+
+Both 'Average SSE' and 'Average Iterations' are lower for kmeans++ than forgy, and as we increase the dataset size, kmeans++ gives much better
+results compared to forgy.
+
+In forgy, initial points might get selected close, because of which clustering could get stuck in a local minima.
+In kmeans++, since initial points are far apart, they are less likely to converge to local minima, resulting in lower 'Average SSE'.
+
+In forgy, since initially points are closer, cluster centres take more iterations to spread out and converge resulting in higher number of 'Average Iterations'.
+In kmeans++, cluster centres are already farther apart, so require less movement and consequently less iterations to converge.
+
+================
+  TASK 4
+================
+
+1. Can you observe from the visualization that k-medians algorithm is more robust to outliers as compared to k-means? Why do you think this happens? (1.5 marks)
+
+Answer: Yes, k-medians is more robust to outliers.
+This happens because in k-means case, centroid is the dimensionwise mean of points in cluster, and we know that mean is highly affected by outliers.
+But in k-medians, cluster-centre is the dimensionwise median of points in clusters, and we know that median is less affected by extreme points.
+
+================
+  TASK 8
+================
+
+1. What do you observe as we reduce the number of clusters (k)? Answer in reference to the quality of decompressed image. (0.5 mark)
+
+Answer: The quality of images deteriorates in the decompressed image. For lower k, larger range of colours get assigned the same colour, due to which we see a paint-brush like effect in the decompressed image. This is a consequence of quantization.
+E.g. for k=64, 4 colours get assigned to same bucket, while for k=16, 16 colours get same colour.
+
+
+2. You can observe that for the small number of clusters, the degree of compression (original size/compressed size) is about the same as that of when we use larger number of clusters even though we need to store lesser number of colors. Can you tell why? How can we increase this ratio in case of smaller number of clusters? [1 mark]
+
+Answer: In compressed image, we need to store both 'cluster_centroids and 'cluster_labels'(compressed image). Size remains same because we only reduced the size of 'cluster_centroids'. Most of the space is occupied by 'cluster_labels', which remains unchanged in size. Each element of 'cluster_labels' still occupies 8 bits memory.
+
+The degree of compression can be increased by changing the data type used to store 'cluster_labels', the compressed image.
+E.g. once we have compressed from 256 to 64 colours, we can represent each element using 6-bits instead of the original 8-bits.
+This is because when representing values in 0-63 in 8-bits, the 2 most significant digits are 00 for all, and can be removed without affecting value.

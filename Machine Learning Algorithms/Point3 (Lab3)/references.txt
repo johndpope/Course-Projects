@@ -1,0 +1,1 @@
+train() function in boosting.py has been implemented using the algorithm discussed in class

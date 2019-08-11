@@ -1,0 +1,1 @@
+python3 encode_maze.py $1;

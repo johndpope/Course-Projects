@@ -1,0 +1,23 @@
+Bagging:-
+
+Training accuracy is higher than validation and testing accuracy, as usual
+All three accuracies become stable around 15 classifiers. After that, more classifiers does not lead to higher bagging accuracy
+
+Boosting:-
+
+ratio(size of sample data/size of training data) = 0.6
+
+Bagging accuracy rises gradually till 15, but boosting accuracy rises much faster until 7, then becomes less steep
+Boosting shows higher fluctuations of accuracy when classifiers are increased
+
+
+1. 
+Testing accuracy is roughly the same for both bagging and boosting
+In bagging, bias does vary much since classifiers are being averaged
+In boosting, bias decreases with increasing number of classifiers, since it focuses on misclassified values
+Bagging accuracy reaches a plateau, but boosting accuracy should theoretically increase with more classifiers
+
+2. Yes
+Ensemble learning exists because a single hyperplane is not always enough to classify data into two classes
+E.g., In 2D plane to separate points inside and outside a triangle, we need 3 perceptrons to use AdaBoost
+The three weights cannot be reduced to a single perceptron, since we can't separate points using single line
